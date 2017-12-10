@@ -13,8 +13,8 @@
     "esm",
     "umd"
   ],
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
+  "main": "index.js",
+  "module": "esm/my-react.development.js",
   "peerDependencies": {
     "react": ">=15"
   },
