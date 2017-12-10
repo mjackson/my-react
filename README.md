@@ -24,34 +24,34 @@ Now, I know, that sounds like a lot. Let's see what it looks like!
 Here's how you might create a simple `<TodoList>` component:
 
 ```js
-import MyReact from 'my-react';
+import MyReact from "my-react"
 
-export const displayName = 'TodoList';
+const displayName = "TodoList"
 
-export const defaultProps = {
-  title: 'Todo List',
-  initialItems: [],
-};
-
-export function setupComponent(my) {
-  my.state = {items: my.props.initialItems};
+const defaultProps = {
+  title: "Todo List",
+  initialItems: []
 }
 
-export function handleSubmit(my, event) {
-  event.preventDefault();
+function setupComponent(my) {
+  my.state = { items: my.props.initialItems }
+}
 
-  const todo = my.refs.todo;
+function handleSubmit(my, event) {
+  event.preventDefault()
+
+  const todo = my.refs.todo
 
   my.setState({
-    items: my.state.items.concat([todo.value]),
-  });
+    items: my.state.items.concat([todo.value])
+  })
 
-  todo.form.reset();
+  todo.form.reset()
 }
 
-export function getElement(my) {
-  const {title} = my.props;
-  const {items} = my.state;
+function getElement(my) {
+  const { title } = my.props
+  const { items } = my.state
 
   return (
     <div>
@@ -61,7 +61,15 @@ export function getElement(my) {
         <input ref="todo" type="text" />
       </form>
     </div>
-  );
+  )
+}
+
+export default {
+  displayName,
+  defaultProps,
+  setupComponent,
+  handleSubmit,
+  getElement
 }
 ```
 
@@ -69,13 +77,13 @@ Assuming the above code was saved in `TodoList.js`, you could use it just like
 any other React component:
 
 ```js
-import MyReact from 'my-react';
-import ReactDOM from 'react-dom';
-import * as TodoList from './TodoList';
+import MyReact from "my-react"
+import ReactDOM from "react-dom"
+import TodoList from "./TodoList"
 
-const node = document.getElementById('app');
+const node = document.getElementById("app")
 
-ReactDOM.render(<TodoList />, node);
+ReactDOM.render(<TodoList />, node)
 ```
 
 You can also put your own properties on the `my` object that aren't needed for
@@ -87,26 +95,34 @@ Note in the following example how `my.timer` is set in `componentDidMount` and
 then cleaned up in `componentWillUnmount`.
 
 ```js
-import MyReact from 'my-react'
+import MyReact from "my-react"
 
-export displayName = 'Counter'
+const displayName = "Counter"
 
-export function setupComponent(my) {
+function setupComponent(my) {
   my.state = { count: 0 }
 }
 
-export function componentDidMount(my) {
+function componentDidMount(my) {
   my.timer = setInterval(() => {
     my.setState({ count: my.state.count + 1 })
   }, 1000)
 }
 
-export function componentWillUnmount(my) {
+function componentWillUnmount(my) {
   clearInterval(my.timer)
 }
 
-export function getElement(my) {
+function getElement(my) {
   return <p>The current count is {my.state.count}</p>
+}
+
+export default {
+  displayName,
+  setupComponent,
+  componentDidMount,
+  componentWillUnmount,
+  getElement
 }
 ```
 

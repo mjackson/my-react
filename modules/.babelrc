@@ -1,0 +1,9 @@
+{
+  "presets": [["env", { "modules": false }]],
+  "plugins": ["external-helpers", "transform-export-extensions"],
+  "env": {
+    "production": {
+      "presets": ["minify"]
+    }
+  }
+}

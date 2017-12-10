@@ -1,10 +1,10 @@
-import React from 'react'
-import invariant from 'invariant'
+import React from "react"
+import invariant from "invariant"
 
 /**
  * React class properties we support.
  */
-var ReactStatics = {
+const ReactStatics = {
   displayName: true,
   defaultProps: true,
   propTypes: true,
@@ -15,7 +15,7 @@ var ReactStatics = {
 /**
  * React lifecycle methods we support.
  */
-var ReactLifecycle = {
+const ReactLifecycle = {
   getChildContext: true,
   componentWillMount: true,
   componentDidMount: true,
@@ -28,14 +28,14 @@ var ReactLifecycle = {
 /**
  * Custom lifecycle methods.
  */
-var AddedLifecycle = {
+const AddedLifecycle = {
   setupComponent: true,
   getElement: true,
   getNextState: true
 }
 
 function isFunction(obj) {
-  return typeof obj === 'function'
+  return typeof obj === "function"
 }
 
 /**
@@ -65,71 +65,57 @@ function isFunction(obj) {
  * object), in which case that function will be used as the `getElement` value.
  */
 function createComponent(def) {
-  invariant(
-    def,
-    'createComponent is missing the component definition'
-  )
+  invariant(def, "createComponent is missing the component definition")
 
   // Support plain functions as well as objects.
-  var getElement = def.getElement || def
+  const getElement = def.getElement || def
 
-  invariant(
-    getElement,
-    'getElement is missing from the component definition'
-  )
+  invariant(getElement, "getElement is missing from the component definition")
 
-  invariant(
-    isFunction(getElement),
-    'getElement must be a function'
-  )
+  invariant(isFunction(getElement), "getElement must be a function")
 
-  var setupComponent = def.setupComponent
+  const setupComponent = def.setupComponent
 
   invariant(
     !setupComponent || isFunction(setupComponent),
-    'setupComponent must be a function'
+    "setupComponent must be a function"
   )
 
   function Component(props) {
     React.Component.call(this, props)
 
     // Auto-bind instance methods.
-    Object.keys(instanceMethods).forEach(function (key) {
+    Object.keys(instanceMethods).forEach(function(key) {
       this[key] = instanceMethods[key].bind(undefined, this)
     }, this)
 
-    if (setupComponent)
-      setupComponent(this)
+    if (setupComponent) setupComponent(this)
   }
 
-  var proto = Component.prototype
+  const proto = Component.prototype
 
   Object.setPrototypeOf(proto, React.Component.prototype)
 
-  proto.render = function () {
+  proto.render = function() {
     return getElement(this)
   }
 
-  var getNextState = def.getNextState
+  const getNextState = def.getNextState
 
   if (getNextState) {
-    invariant(
-      isFunction(getNextState),
-      'getNextState must be a function'
-    )
+    invariant(isFunction(getNextState), "getNextState must be a function")
 
-    proto.componentWillReceiveProps = function (nextProps) {
-      var nextState = getNextState(this, nextProps)
+    proto.componentWillReceiveProps = function(nextProps) {
+      const nextState = getNextState(this, nextProps)
 
-      if (nextState)
-        this.setState(nextState)
+      if (nextState) this.setState(nextState)
     }
   }
 
-  var instanceMethods = {}
+  const instanceMethods = {}
 
-  Object.keys(def).forEach(function (key) {
-    var value = def[key]
+  Object.keys(def).forEach(function(key) {
+    const value = def[key]
 
     if (ReactStatics[key]) {
       Component[key] = value
@@ -141,7 +127,7 @@ function createComponent(def) {
       )
 
       // Keep React lifecycle methods on the prototype, for efficiency.
-      proto[key] = function (a, b) {
+      proto[key] = function(a, b) {
         return value(this, a, b)
       }
     } else if (!AddedLifecycle[key]) {
@@ -157,8 +143,9 @@ function createComponent(def) {
   })
 
   // Use the names of functions as the displayName.
-  if (!Component.displayName && isFunction(def))
+  if (!Component.displayName && isFunction(def)) {
     Component.displayName = def.name
+  }
 
   return Component
 }
