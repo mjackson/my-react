@@ -1,6 +1,6 @@
 {
   "presets": [["env", { "modules": false }]],
-  "plugins": ["external-helpers", "transform-export-extensions"],
+  "plugins": ["external-helpers"],
   "env": {
     "production": {
       "presets": ["minify"]

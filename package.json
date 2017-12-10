@@ -24,7 +24,6 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-plugin-external-helpers": "^6.22.0",
-    "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-minify": "^0.2.0",
     "gzip-size": "^4.1.0",
