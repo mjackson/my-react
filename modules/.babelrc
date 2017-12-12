@@ -3,7 +3,8 @@
   "plugins": ["external-helpers"],
   "env": {
     "production": {
-      "presets": ["minify"]
+      "presets": ["minify"],
+      "plugins": ["dev-expression"]
     }
   }
 }
