@@ -27,7 +27,7 @@ Now, I know, that sounds like a lot. Let's see what it looks like!
 Here's how you might create a simple `<TodoList>` component:
 
 ```js
-import MyReact from "my-react"
+import MyReact from "@mjackson/my-react"
 
 const displayName = "TodoList"
 
@@ -77,7 +77,7 @@ Assuming the above code was saved in `TodoList.js`, you could use it just like
 any other React component (see [#usage](Usage) below):
 
 ```js
-import MyReact from "my-react"
+import MyReact from "@mjackson/my-react"
 import ReactDOM from "react-dom"
 import TodoList from "./TodoList"
 
@@ -95,7 +95,7 @@ Note in the following example how `my.timer` is set in `componentDidMount` and
 then cleaned up in `componentWillUnmount`.
 
 ```js
-import MyReact from "my-react"
+import MyReact from "@mjackson/my-react"
 
 const displayName = "Counter"
 
