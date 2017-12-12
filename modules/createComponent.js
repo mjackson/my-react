@@ -28,7 +28,7 @@ const ReactLifecycle = {
 /**
  * Custom lifecycle methods.
  */
-const AddedLifecycle = {
+const MyLifecycle = {
   setupComponent: true,
   getElement: true,
   getNextState: true
@@ -107,7 +107,6 @@ function createComponent(def) {
 
     proto.componentWillReceiveProps = function(nextProps) {
       const nextState = getNextState(this, nextProps)
-
       if (nextState) this.setState(nextState)
     }
   }
@@ -130,7 +129,7 @@ function createComponent(def) {
       proto[key] = function(a, b) {
         return value(this, a, b)
       }
-    } else if (!AddedLifecycle[key]) {
+    } else if (!MyLifecycle[key]) {
       invariant(
         isFunction(value),
         'Unable to bind property "%s"; it must be a function',

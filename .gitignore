@@ -1,3 +1,4 @@
-cjs
-esm
-umd
+/cjs
+/esm
+/node_modules
+/umd
