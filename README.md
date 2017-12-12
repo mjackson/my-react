@@ -1,4 +1,7 @@
-myReact is React without ES6 classes or `this`.
+# myReact
+
+myReact is a lightweight, drop-in replacement for React that avoids using ES6
+classes and `this`.
 
 In myReact, you don't create classes or extend `React.Component`. Instead, you
 just export a bunch of functions from a JavaScript module.
