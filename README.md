@@ -1,16 +1,16 @@
 myReact is React without ES6 classes or `this`.
 
+In myReact, you don't create classes or extend `React.Component`. Instead, you
+just export a bunch of functions from a JavaScript module.
+
 Instead of using `this` to access the component instance in methods, _every
 method_ receives the instance as the first argument, usually called `my`
 (similar to how instance methods in Python always receive `self` as the initial
 argument). This helps developers avoid many common mistakes including:
 
 * forgetting to bind the appropriate `this` in event handler methods
-* getting the correct `this` inside `forEach` invocations
 * getting the correct `this` inside inline event handlers in the `render` method
-
-Also, instead of modeling components using classes, components in myReact are
-simply modules or plain objects.
+* getting the correct `this` inside `forEach`/`map` in the `render` method
 
 Other minor improvements to the ES6 class-based React component API include:
 
@@ -71,7 +71,7 @@ export default {
 ```
 
 Assuming the above code was saved in `TodoList.js`, you could use it just like
-any other React component:
+any other React component (see [#usage](Usage) below):
 
 ```js
 import MyReact from "my-react"
