@@ -1,6 +1,6 @@
 {
   "name": "@mjackson/my-react",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A lightweight, drop-in replacement for React that avoids using ES6 classes and \"this\"",
   "repository": "mjackson/my-react",
   "author": "Michael Jackson",
