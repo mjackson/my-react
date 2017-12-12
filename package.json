@@ -1,8 +1,7 @@
 {
   "name": "@mjackson/my-react",
-  "version": "0.3.0",
-  "description":
-    "A lightweight, drop-in replacement for React that avoids using ES6 classes and \"this\"",
+  "version": "0.3.1",
+  "description": "A lightweight, drop-in replacement for React that avoids using ES6 classes and \"this\"",
   "repository": "mjackson/my-react",
   "author": "Michael Jackson",
   "license": "MIT",
@@ -10,7 +9,11 @@
     "build": "node scripts/build.js",
     "prepublishOnly": "yarn build"
   },
-  "files": ["cjs", "esm", "umd"],
+  "files": [
+    "cjs",
+    "esm",
+    "umd"
+  ],
   "main": "index.js",
   "module": "esm/my-react.development.js",
   "peerDependencies": {
@@ -33,7 +36,14 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-replace": "^2.0.0"
   },
-  "keywords": ["react", "es6", "static", "class", "classes", "createClass"],
+  "keywords": [
+    "react",
+    "es6",
+    "static",
+    "class",
+    "classes",
+    "createClass"
+  ],
   "prettier": {
     "printWidth": 80,
     "semi": false
