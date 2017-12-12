@@ -50,13 +50,10 @@ function handleSubmit(my, event) {
 }
 
 function getElement(my) {
-  const { title } = my.props
-  const { items } = my.state
-
   return (
     <div>
-      <h1>{title}</h1>
-      <ol>{items.map(item => <li>{item}</li>)}</ol>
+      <h1>{my.props.title}</h1>
+      <ol>{my.state.items.map(item => <li>{item}</li>)}</ol>
       <form onSubmit={my.handleSubmit}>
         <input ref="todo" type="text" />
       </form>
@@ -129,3 +126,31 @@ export default {
 ## Installation
 
     yarn add @mjackson/my-react
+
+## Usage
+
+Assuming you're already using Babel for compiling JSX, you can just do:
+
+```js
+import MyReact from "@mjackson/my-react"
+
+// Tell Babel to transform JSX into MyReact.createElement calls
+/** @jsx MyReact.createElement */
+```
+
+If you'd rather not put that comment in every file where you're using JSX, you
+can just put the following in your `.babelrc`:
+
+```json
+{
+  "plugins": ["transform-react-jsx", { "pragma": "MyReact.createElement" }]
+}
+```
+
+## Feedback
+
+I'd love to get some feedback on this approach. Please feel free to reach out
+[on Twitter](https://twitter.com/mjackson) or
+[GitHub](https://github.com/mjackson/my-react').
+
+Thanks!
