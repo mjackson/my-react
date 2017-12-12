@@ -1,6 +1,6 @@
 {
   "name": "@mjackson/my-react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React without ES6 classes or \"this\"",
   "repository": "mjackson/my-react",
   "author": "Michael Jackson",
@@ -9,7 +9,11 @@
     "build": "node scripts/build.js",
     "prepublishOnly": "yarn build"
   },
-  "files": ["cjs", "esm", "umd"],
+  "files": [
+    "cjs",
+    "esm",
+    "umd"
+  ],
   "main": "index.js",
   "module": "esm/my-react.development.js",
   "peerDependencies": {
@@ -32,7 +36,14 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-replace": "^2.0.0"
   },
-  "keywords": ["react", "es6", "static", "class", "classes", "createClass"],
+  "keywords": [
+    "react",
+    "es6",
+    "static",
+    "class",
+    "classes",
+    "createClass"
+  ],
   "prettier": {
     "printWidth": 80,
     "semi": false
