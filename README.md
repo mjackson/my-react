@@ -74,7 +74,7 @@ export default {
 ```
 
 Assuming the above code was saved in `TodoList.js`, you could use it just like
-any other React component (see [#usage](Usage) below):
+any other React component (see [Usage](#usage) below):
 
 ```js
 import MyReact from "@mjackson/my-react"
