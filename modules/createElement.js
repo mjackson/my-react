@@ -11,23 +11,23 @@ const cache = new Map()
  * Creates a new React element using a component definition. New components
  * are automatically created from definitions on-the-fly as needed.
  */
-function createElement() {
-  const args = Array.prototype.slice.call(arguments, 0)
-  const def = args.shift()
+function createElement(...args) {
+  const def = args[0]
 
   invariant(def, "createElement needs a component definition")
 
-  let component =
-    typeof def === "string" || typeof def === "function" ? def : cache.get(def)
+  if (typeof def !== "string" && typeof def !== "function") {
+    let component = cache.get(def)
 
-  if (component == null) {
-    component = createComponent(def)
-    cache.set(def, component)
+    if (component == null) {
+      component = createComponent(def)
+      cache.set(def, component)
+    }
+
+    args[0] = component
   }
 
-  args.unshift(component)
-
-  return React.createElement.apply(React, args)
+  return React.createElement(...args)
 }
 
 export default createElement
